@@ -1,0 +1,2 @@
+npm create sanity@latest -- --project hek03y0b --dataset production --template clean --typescript --output-path studio-blogwebsite
+cd studio-blogwebsite
