@@ -1,4 +1,3 @@
-import { fullBlog } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react"; // Import the PortableText component
@@ -15,8 +14,9 @@ async function getData(slug: string) {
     return data;
 }
 
-export default async function blogArtical({ params }: { params: { slug: string } }) {
-    const data: fullBlog = await getData(params.slug);
+export default async function blogArtical({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const data = await getData(slug);
 
     return (
         <div className="mt-10">
